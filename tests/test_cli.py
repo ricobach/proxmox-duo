@@ -11,7 +11,7 @@ class ConfigTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             config = Path(directory) / "duo.ini"
             config.write_text(
-                "[duo]\\nikey=DIexample\\nskey=secret\\nhost=api-test.duosecurity.com\\n"
+                "[duo]\nikey=DIexample\nskey=secret\nhost=api-test.duosecurity.com\n"
             )
             os.chmod(config, 0o600)
             settings = load_settings(str(config))
@@ -20,7 +20,7 @@ class ConfigTests(unittest.TestCase):
     def test_world_readable_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             config = Path(directory) / "duo.ini"
-            config.write_text("[duo]\\nikey=x\\nskey=y\\nhost=api-test.duosecurity.com\\n")
+            config.write_text("[duo]\nikey=x\nskey=y\nhost=api-test.duosecurity.com\n")
             os.chmod(config, 0o644)
             with self.assertRaises(ValueError):
                 load_settings(str(config))
@@ -28,7 +28,7 @@ class ConfigTests(unittest.TestCase):
     def test_symlink_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             target = Path(directory) / "real.ini"
-            target.write_text("[duo]\\nikey=x\\nskey=y\\nhost=api-test.duosecurity.com\\n")
+            target.write_text("[duo]\nikey=x\nskey=y\nhost=api-test.duosecurity.com\n")
             os.chmod(target, 0o600)
             link = Path(directory) / "link.ini"
             link.symlink_to(target)
