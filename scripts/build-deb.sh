@@ -20,6 +20,7 @@ mkdir -p "$DEST"
 DEST="$(realpath "$DEST")"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
+chmod 0755 "$TMP"
 
 install -d -m 0755 "$TMP/DEBIAN" "$TMP/usr/bin" \
   "$TMP/usr/lib/python3/dist-packages/proxmox_duo" \
