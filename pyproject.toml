@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "proxmox-duo"
+version = "0.1.0"
+description = "Experimental Push-only Duo Auth API client for a future Proxmox VE web TFA extension"
+requires-python = ">=3.10"
+dependencies = ["duo-client>=5.0,<7"]
+
+[project.scripts]
+proxmox-duo = "proxmox_duo.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["proxmox_duo*"]
