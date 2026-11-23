@@ -6,7 +6,7 @@ import re
 
 import duo_client
 
-_HOST_PATTERN = re.compile(r"^api-[a-z0-9-]+\\.duosecurity\\.com$", re.I)
+_HOST_PATTERN = re.compile(r"^api-[a-z0-9-]+\.duosecurity\.com$", re.I)
 
 
 @dataclass(frozen=True)
